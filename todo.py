@@ -2,7 +2,7 @@ import helper
 from flask import Flask, request, Response
 import json
 
-app = Flask('todo')
+app = Flask(__name__)
 
 @app.route('/')
 def helloworld():
@@ -65,3 +65,6 @@ def delete():
         return response
     response = Response(json.dumps(res_data), mimetype='application/json')
     return response
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")
+
